@@ -1,0 +1,435 @@
+timestamp,session_id,query,response,crisis_flag
+2026-03-21T22:15:47.541246,web-session-1,hey,"I'm here only for mental health support. Feel free to ask anything related to stress, anxiety, sleep, sadness, anger, confidence, or emotional wellbeing 😊",False
+2026-03-21T22:24:48.209602,web-session-1,hii,"Hey! I'm Sage, your mental health chatbot 🌿
+
+You can talk to me about stress, anxiety, sleep problems, sadness, anger, motivation, confidence, or emotional wellbeing.
+
+Tell me how you're feeling today.",False
+2026-03-21T22:24:56.872868,web-session-1,hey,"Hey! I'm Sage, your mental health chatbot 🌿
+
+You can talk to me about stress, anxiety, sleep problems, sadness, anger, motivation, confidence, or emotional wellbeing.
+
+Tell me how you're feeling today.",False
+2026-03-21T22:25:14.309316,web-session-1,How do I stop overthinking?,"I'm sorry you're feeling stressed. Stress can make everything feel heavier, but a few simple steps may help right now.
+
+Try this:
+1. Inhale for 4 seconds
+2. Hold for 4 seconds
+3. Exhale slowly for 6 seconds
+Repeat this 3 to 5 times
+
+You can also write down what is stressing you and separate it into:
+- things you can control
+- things you cannot control
+
+If stress is affecting sleep, studies, work, or daily life, it would be a good idea to talk to a counselor, therapist, or doctor.",False
+2026-03-21T22:27:54.411016,web-session-1,Feeling stressed 😟,"Yaar mujhe afsos hai ki tum itna stress feel kar rahe ho. Stress kabhi kabhi sab kuch heavy bana deta hai, but abhi thoda calm hone ke liye ye try karo:
+
+1. 4 second inhale karo
+2. 4 second hold karo
+3. 6 second dheere se exhale karo
+Isko 3 se 5 baar repeat karo
+
+Ek aur simple step:
+- jo cheezein tension de rahi hain unhe likho
+- phir unhe 2 parts me divide karo:
+  1. jo tum control kar sakte ho
+  2. jo tum control nahi kar sakte
+
+Agar stress sleep ya daily life affect kar raha hai, toh counselor, therapist ya doctor se baat karna better rahega.",False
+2026-03-21T22:34:40.947660,web-session-1,Feeling stressed 😟,"Stress can build up quietly and then suddenly feel overwhelming. A grounding exercise may help.
+
+Look around and notice:
+- 5 things you can see
+- 4 things you can touch
+- 3 things you can hear
+- 2 things you can smell
+- 1 thing you can taste
+
+This can bring your mind back to the present moment. Also try drinking water and taking a short break from screens.
+
+If this has been going on for many days or feels too hard to manage alone, professional support could really help.",False
+2026-03-21T22:36:34.440427,web-session-1,hii,"Hey! I'm Sage, your mental health chatbot 🌿
+
+You can talk to me about stress, anxiety, sleep problems, sadness, anger, motivation, confidence, or emotional wellbeing.
+
+Tell me how you're feeling today.",False
+2026-03-21T22:36:44.084236,web-session-1,i want to die,"I'm really sorry you're feeling this overwhelmed right now. You matter, and you deserve support.
+
+Please reach out right now to a trusted person near you, such as a family member, friend, teacher, or local emergency service if you feel unsafe.
+
+📞 India: 9152987821 (iCall), 1800-599-0019 (Vandrevala Foundation)
+📞 USA/Canada: 988
+📞 UK/Ireland: 116 123 (Samaritans)
+
+Please do not stay alone with this feeling. Reach out to someone now.
+
+You can also tell me what happened in one sentence, and we can take it one small step at a time.",True
+2026-03-22T15:03:00.419607,web-session-1,hii,"Hey! I'm Sage, your mental health chatbot 🌿
+
+You can talk to me about stress, anxiety, sleep problems, sadness, anger, motivation, confidence, or emotional wellbeing.
+
+Tell me how you're feeling today.",False
+2026-03-22T15:03:14.016894,web-session-1,i want to die,"I'm really sorry you're feeling this overwhelmed right now. You matter, and you deserve support.
+
+Please reach out right now to a trusted person near you, such as a family member, friend, teacher, or local emergency service if you feel unsafe.
+
+📞 India: 9152987821 (iCall), 1800-599-0019 (Vandrevala Foundation)
+📞 USA/Canada: 988
+📞 UK/Ireland: 116 123 (Samaritans)
+
+Please do not stay alone with this feeling. Reach out to someone now.
+
+You can also tell me what happened in one sentence, and we can take it one small step at a time.",True
+2026-03-22T15:03:59.877120,web-session-1,"I feel stressed
+still stressed
+i want to die","I'm really sorry you're feeling this overwhelmed right now. You matter, and you deserve support.
+
+Please reach out right now to a trusted person near you, such as a family member, friend, teacher, or local emergency service if you feel unsafe.
+
+📞 India: 9152987821 (iCall), 1800-599-0019 (Vandrevala Foundation)
+📞 USA/Canada: 988
+📞 UK/Ireland: 116 123 (Samaritans)
+
+Please do not stay alone with this feeling. Reach out to someone now.
+
+You can also tell me what happened in one sentence, and we can take it one small step at a time.",True
+2026-03-22T15:06:40.153588,web-session-1,Stay with me,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-22T15:06:45.003210,web-session-1,How do I stop overthinking?,"Stress can build up quietly and then suddenly feel overwhelming. A grounding exercise may help.
+
+Look around and notice:
+- 5 things you can see
+- 4 things you can touch
+- 3 things you can hear
+- 2 things you can smell
+- 1 thing you can taste
+
+This can bring your mind back to the present moment. Also try drinking water and taking a short break from screens.
+
+If this has been going on for many days or feels too hard to manage alone, professional support could really help.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T17:50:15.896097,web-session-1,Feeling stressed 😟,"Stress can build up quietly and then suddenly feel overwhelming. A grounding exercise may help.
+
+Look around and notice:
+- 5 things you can see
+- 4 things you can touch
+- 3 things you can hear
+- 2 things you can smell
+- 1 thing you can taste
+
+This can bring your mind back to the present moment. Also try drinking water and taking a short break from screens.
+
+If this has been going on for many days or feels too hard to manage alone, professional support could really help.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T17:50:33.633725,web-session-1,i want to die,"I'm really sorry you're feeling this overwhelmed right now. You matter, and you deserve support.
+
+Please reach out right now to a trusted person near you, such as a family member, friend, teacher, or local emergency service if you feel unsafe.
+
+📞 India: 9152987821 (iCall), 1800-599-0019 (Vandrevala Foundation)
+📞 USA/Canada: 988
+📞 UK/Ireland: 116 123 (Samaritans)
+
+Please do not stay alone with this feeling. Reach out to someone now.
+
+You can also tell me what happened in one sentence, and we can take it one small step at a time.",True
+2026-03-22T17:52:05.888066,web-session-1,Feeling stressed 😟,"I'm sorry you're feeling stressed. Stress can make everything feel heavier, but a few simple steps may help right now.
+
+Try this:
+1. Inhale for 4 seconds
+2. Hold for 4 seconds
+3. Exhale slowly for 6 seconds
+Repeat this 3 to 5 times
+
+You can also write down what is stressing you and separate it into:
+- things you can control
+- things you cannot control
+
+If stress is affecting sleep, studies, work, or daily life, it would be a good idea to talk to a counselor, therapist, or doctor.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T18:13:31.136294,web-session-1,Exam anxiety 📚,"It sounds like anxiety may be making things feel overwhelming right now. Try not to fight the feeling too hard. Instead, slow things down.
+
+Helpful steps:
+- breathe slowly
+- reduce caffeine if you've had any
+- step away from noisy surroundings
+- remind yourself: This feeling will pass
+
+If this keeps happening regularly or is affecting sleep, studies, or concentration, professional support could really help.
+
+Would you like to try a grounding technique?",False
+2026-03-22T18:13:51.248712,web-session-1,How do I stop overthinking?,"Stress can build up quietly and then suddenly feel overwhelming. A grounding exercise may help.
+
+Look around and notice:
+- 5 things you can see
+- 4 things you can touch
+- 3 things you can hear
+- 2 things you can smell
+- 1 thing you can taste
+
+This can bring your mind back to the present moment. Also try drinking water and taking a short break from screens.
+
+If this has been going on for many days or feels too hard to manage alone, professional support could really help.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T18:14:20.807455,web-session-1,iam happy,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-22T18:14:45.509141,web-session-1,iam happy with your tips,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-22T18:32:47.841727,web-session-1,i am happy,"I'm really glad to hear that 🌿
+
+It means a lot to know you're feeling better. You've done well by taking small steps for yourself.
+
+If you'd like, I can also help you with more stress relief tips, a calming exercise, or ways to stay feeling okay.",False
+2026-03-22T18:33:10.211840,web-session-1,Give me a grounding technique,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-22T18:33:41.830821,web-session-1,How do I stop overthinking?,"I'm sorry you're feeling stressed. Stress can make everything feel heavier, but a few simple steps may help right now.
+
+Try this:
+1. Inhale for 4 seconds
+2. Hold for 4 seconds
+3. Exhale slowly for 6 seconds
+Repeat this 3 to 5 times
+
+You can also write down what is stressing you and separate it into:
+- things you can control
+- things you cannot control
+
+If stress is affecting sleep, studies, work, or daily life, it would be a good idea to talk to a counselor, therapist, or doctor.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T18:34:16.050196,web-session-1,merko exam se dar lag rha hai,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-22T18:34:36.897070,web-session-1,merko exams ka pressure hai,"I'm sorry you're feeling stressed. Stress can make everything feel heavier, but a few simple steps may help right now.
+
+Try this:
+1. Inhale for 4 seconds
+2. Hold for 4 seconds
+3. Exhale slowly for 6 seconds
+Repeat this 3 to 5 times
+
+You can also write down what is stressing you and separate it into:
+- things you can control
+- things you cannot control
+
+If stress is affecting sleep, studies, work, or daily life, it would be a good idea to talk to a counselor, therapist, or doctor.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T18:35:15.886017,web-session-1,How do I stop overthinking?,"Stress can build up quietly and then suddenly feel overwhelming. A grounding exercise may help.
+
+Look around and notice:
+- 5 things you can see
+- 4 things you can touch
+- 3 things you can hear
+- 2 things you can smell
+- 1 thing you can taste
+
+This can bring your mind back to the present moment. Also try drinking water and taking a short break from screens.
+
+If this has been going on for many days or feels too hard to manage alone, professional support could really help.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T19:13:33.623905,web-session-1,Feeling stressed 😟,"Sometimes stress reduces when you stop fighting all of it at once. Start with one next step, not the whole problem.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T19:13:39.058646,web-session-1,How do I stop overthinking?,"If your mind won't stop racing, try breathing slowly and naming 5 things you can see around you.
+
+Would you like to try a grounding technique?",False
+2026-03-22T20:08:23.072109,web-session-1,Feeling stressed 😟,"Stress can make even small tasks feel huge. Be gentle with yourself and focus on progress, not perfection.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T20:11:17.620041,web-session-1,How do I stop overthinking?,"When thoughts keep looping, write the main thought on paper and then write one small next step beside it.
+
+Would you like to try a grounding technique?",False
+2026-03-22T20:11:22.782040,web-session-1,Exam anxiety 📚,"I'm really glad to hear that 🌿
+
+It means a lot to know you're feeling better. You've done well by taking small steps for yourself.
+
+If you'd like, I can also help with more stress relief tips, a calming exercise, or ways to stay feeling okay.",False
+2026-03-22T20:12:17.010992,web-session-1,iam happy with your advise,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-22T20:12:38.832464,web-session-1,iam happy with your tips,"I'm really glad to hear that 🌿
+
+It means a lot to know you're feeling better. You've done well by taking small steps for yourself.
+
+If you'd like, I can also help with more stress relief tips, a calming exercise, or ways to stay feeling okay.",False
+2026-03-22T21:16:06.896589,web-session-1,c++,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-22T22:21:39.598222,web-session-1,i love your advise,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-22T22:22:08.750530,web-session-1,nikhil,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-22T23:37:49.738991,0a4dcb39-16e4-4e56-97ad-07a11f067abf,hello,"Hey! I'm Sage, your mental health chatbot 🌿
+
+You can talk to me about stress, anxiety, sleep problems, sadness, anger, motivation, confidence, or emotional wellbeing.
+
+Tell me how you're feeling today.",False
+2026-03-22T23:38:09.868477,0a4dcb39-16e4-4e56-97ad-07a11f067abf,iam felling stressed,"Stress can make even small tasks feel huge. Be gentle with yourself and focus on progress, not perfection.
+
+Would you like to try a breathing exercise?",False
+2026-03-22T23:38:43.992352,0a4dcb39-16e4-4e56-97ad-07a11f067abf,mujhe stress feel ho rha hai,"Stress ke time body bhi tight ho jati hai. Shoulders relax karo, thoda paani piyo, aur 2 minute ke liye slow breathing karo.
+
+Kya tum breathing exercise try karna chahoge?",False
+2026-03-22T23:38:57.200016,0a4dcb39-16e4-4e56-97ad-07a11f067abf,han,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-23T21:46:44.040187,8734e949-d13c-4741-9699-6c0590648626,How do I stop overthinking?,"If your mind won't stop racing, try breathing slowly and naming 5 things you can see around you.
+
+Would you like to try a grounding technique?",False
+2026-03-23T21:46:50.568857,8734e949-d13c-4741-9699-6c0590648626,I want to talk about it,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-23T21:47:16.072309,8734e949-d13c-4741-9699-6c0590648626,how i overcome anger,"Before reacting, try naming what triggered you. That can make the feeling clearer.",False
+2026-03-23T21:51:46.101354,8734e949-d13c-4741-9699-6c0590648626,Just want to talk 💬,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-23T22:44:58.524751,8734e949-d13c-4741-9699-6c0590648626,i am happy,"I'm really glad that helped 🌿 If you want, we can keep building on what’s working for you.",False
+2026-03-23T22:45:11.275888,8734e949-d13c-4741-9699-6c0590648626,Exam anxiety 📚,That’s wonderful to hear 🌿 It’s great that the support was useful for you.,False
+2026-03-23T22:45:24.081069,8734e949-d13c-4741-9699-6c0590648626,What is the 5-4-3-2-1 method?,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-25T08:05:01.144813,8734e949-d13c-4741-9699-6c0590648626,hello,"Hey again! I'm Sage 🌿
+
+I'm here for you. You can talk to me about stress, anxiety, sleep, sadness, anger, motivation, confidence, or emotional wellbeing.
+
+How have you been feeling lately?",False
+2026-03-25T08:05:20.965794,8734e949-d13c-4741-9699-6c0590648626,Give me a grounding technique,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-03-25T08:11:20.900105,8734e949-d13c-4741-9699-6c0590648626,how i control mental stress,"If your thoughts are piling up, try a quick brain dump. Write everything on paper, then circle only the one thing that matters most right now.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T15:08:32.848581,bcea3c8d-d6f6-4d9a-9804-560bcf5e1016,Feeling stressed 😟,"Stress can build up quietly and suddenly feel overwhelming. Try grounding yourself by naming 5 things you see and 4 things you can touch.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T15:08:40.353390,bcea3c8d-d6f6-4d9a-9804-560bcf5e1016,hey,"Hey again! I'm Sage 🌿
+
+I'm here for you. You can talk to me about stress, anxiety, sleep, sadness, anger, motivation, confidence, or emotional wellbeing.
+
+How have you been feeling lately?",False
+2026-04-02T15:08:44.911908,bcea3c8d-d6f6-4d9a-9804-560bcf5e1016,im happy,That’s a really good sign 🌿 I’m happy the suggestions were helpful.,False
+2026-04-02T15:08:56.329099,bcea3c8d-d6f6-4d9a-9804-560bcf5e1016,unistay,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-04-02T15:09:39.140023,bcea3c8d-d6f6-4d9a-9804-560bcf5e1016,i want to die,"I'm really sorry you're feeling this overwhelmed right now. You matter, and you deserve support.
+
+Please reach out right now to a trusted person near you, such as a family member, friend, teacher, or local emergency service if you feel unsafe.
+
+📞 India: 9152987821 (iCall), 1800-599-0019 (Vandrevala Foundation)
+📞 USA/Canada: 988
+📞 UK/Ireland: 116 123 (Samaritans)
+
+Please do not stay alone with this feeling. Reach out to someone now.
+
+You can also tell me what happened in one sentence, and we can take it one small step at a time.",True
+2026-04-02T15:10:42.837797,bcea3c8d-d6f6-4d9a-9804-560bcf5e1016,tera naam kya h,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-04-02T15:11:57.855464,bcea3c8d-d6f6-4d9a-9804-560bcf5e1016,mereko bedtime tips de,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-04-02T15:12:15.443599,bcea3c8d-d6f6-4d9a-9804-560bcf5e1016,Give me a grounding technique,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-04-02T15:25:04.067203,c76c68fb-7245-435a-8640-36ffd527d107,Can't sleep 🌙,"A simple sleep reset: dim the lights, slow your breathing, and avoid checking your phone again.
+
+Would you like bedtime routine tips too?",False
+2026-04-02T15:25:12.025522,c76c68fb-7245-435a-8640-36ffd527d107,I keep waking up at night,"If your mind keeps racing at night, write your thoughts in a notebook before sleeping.
+
+Would you like bedtime routine tips too?",False
+2026-04-02T15:25:59.490972,c76c68fb-7245-435a-8640-36ffd527d107,"i have a lot of work to do? what i can do? i have a lot of fear of this , give me solution","It sounds like anxiety may be making things feel bigger right now. Try placing both feet on the floor and focusing on the room around you.
+
+Would you like to try a grounding technique?",False
+2026-04-02T15:28:35.777542,c76c68fb-7245-435a-8640-36ffd527d107,hii,"Hey again! I'm Sage 🌿
+
+I'm here for you. You can talk to me about stress, anxiety, sleep, sadness, anger, motivation, confidence, or emotional wellbeing.
+
+How have you been feeling lately?",False
+2026-04-02T15:29:01.550461,c76c68fb-7245-435a-8640-36ffd527d107,can you help me in cgpa enhncment,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-04-02T15:29:32.041735,c76c68fb-7245-435a-8640-36ffd527d107,i am getting stress due to acdmecis,"Stress can build up quietly and suddenly feel overwhelming. Try grounding yourself by naming 5 things you see and 4 things you can touch.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T15:29:44.214254,c76c68fb-7245-435a-8640-36ffd527d107,tell me more,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-04-02T15:31:46.989081,c76c68fb-7245-435a-8640-36ffd527d107,sucide,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-04-02T15:32:09.087759,c76c68fb-7245-435a-8640-36ffd527d107,i want to die,"I'm really sorry you're feeling this overwhelmed right now. You matter, and you deserve support.
+
+Please reach out right now to a trusted person near you, such as a family member, friend, teacher, or local emergency service if you feel unsafe.
+
+📞 India: 9152987821 (iCall), 1800-599-0019 (Vandrevala Foundation)
+📞 USA/Canada: 988
+📞 UK/Ireland: 116 123 (Samaritans)
+
+Please do not stay alone with this feeling. Reach out to someone now.
+
+You can also tell me what happened in one sentence, and we can take it one small step at a time.",True
+2026-04-02T15:32:43.785849,c76c68fb-7245-435a-8640-36ffd527d107,virat khjoli,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-04-02T15:34:45.633920,c76c68fb-7245-435a-8640-36ffd527d107,hiii,"I'm a mental health chatbot 😊 You can ask me about stress, anxiety, sleep, sadness, anger, confidence, motivation, or emotional wellbeing.",False
+2026-04-02T15:34:53.556743,c76c68fb-7245-435a-8640-36ffd527d107,I feel overwhelmed,"Sometimes stress reduces when you stop fighting all of it at once. Start with one next step, not the whole problem.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T15:34:53.984619,c76c68fb-7245-435a-8640-36ffd527d107,I feel overwhelmed,"Stress can make even small tasks feel huge. Be gentle with yourself and focus on progress, not perfection.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T15:34:55.129401,c76c68fb-7245-435a-8640-36ffd527d107,I feel overwhelmed,"If your thoughts are piling up, try a quick brain dump. Write everything on paper, then circle only the one thing that matters most right now.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T15:34:55.489030,c76c68fb-7245-435a-8640-36ffd527d107,I feel overwhelmed,"Sometimes stress reduces when you stop fighting all of it at once. Start with one next step, not the whole problem.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T15:34:55.832296,c76c68fb-7245-435a-8640-36ffd527d107,I feel overwhelmed,"Stress often feels worse when the body is tense too. Unclench your jaw, drop your shoulders, and breathe out slowly for 6 seconds.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T15:34:56.186342,c76c68fb-7245-435a-8640-36ffd527d107,I feel overwhelmed,"Stress can make even small tasks feel huge. Be gentle with yourself and focus on progress, not perfection.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T15:34:56.568371,c76c68fb-7245-435a-8640-36ffd527d107,I feel overwhelmed,"Stress can build up quietly and suddenly feel overwhelming. Try grounding yourself by naming 5 things you see and 4 things you can touch.
+
+Would you like to try a breathing exercise?",False
+2026-04-02T16:04:04.232373,test-session-1,I am feeling really stressed about my exams,"It sounds like you're carrying a lot right now. When stress builds up, try this: **take 5 slow breaths** — inhale for 4 seconds, hold for 4, exhale for 6.
+
+Would you like to tell me more about what's stressing you?",False
+2026-04-02T16:04:21.886536,test-session-1,Can you give me some tips to calm down?,"I hear you, and I'm glad you're talking about it. Sadness can feel really heavy, especially when you carry it alone.
+
+Right now, try one small caring step: **drink some water, and sit somewhere comfortable**. You don't have to fix everything at once.
+
+Would you like to share what's been making you feel this way?",False
+2026-04-02T16:04:22.217428,test-session-2,I have a deadline tomorrow,"I appreciate you reaching out 🌿 I'm here to help with stress, anxiety, sleep, sadness, anger, motivation, relationships, and emotional wellbeing.
+
+Could you tell me a bit more about how you're feeling? I'd like to help.",False
+2026-04-02T16:04:22.262743,test-session-3,I want to end my life,"I'm really sorry you're feeling this way. You matter, and you deserve support. 💚
+
+**Please reach out to someone right now:**
+
+📞 **India:** 9152987821 (iCall) · 1800-599-0019 (Vandrevala Foundation)
+📞 **USA/Canada:** 988 (Suicide & Crisis Lifeline)
+📞 **UK/Ireland:** 116 123 (Samaritans)
+
+Please don't stay alone with this feeling. Talk to a trusted person — a family member, friend, teacher, or call the helplines above.
+
+If you'd like, you can tell me what happened in one sentence, and we can take things one small step at a time. I'm here for you. 🌿",True
+2026-04-02T16:04:37.389395,test-crisis,I want to end my life,"I'm really sorry you're feeling this way. You matter, and you deserve support. 💚
+
+**Please reach out to someone right now:**
+
+📞 **India:** 9152987821 (iCall) · 1800-599-0019 (Vandrevala Foundation)
+📞 **USA/Canada:** 988 (Suicide & Crisis Lifeline)
+📞 **UK/Ireland:** 116 123 (Samaritans)
+
+Please don't stay alone with this feeling. Talk to a trusted person — a family member, friend, teacher, or call the helplines above.
+
+If you'd like, you can tell me what happened in one sentence, and we can take things one small step at a time. I'm here for you. 🌿",True
+2026-04-02T16:04:56.979302,test-deadline,I have a deadline tomorrow,"I appreciate you reaching out 🌿 I'm here to help with stress, anxiety, sleep, sadness, anger, motivation, relationships, and emotional wellbeing.
+
+Could you tell me a bit more about how you're feeling? I'd like to help.",False
+2026-04-02T16:05:10.083530,test-hinglish,yaar mujhe bahut stress ho raha hai exam ka,"It sounds like you're carrying a lot right now. When stress builds up, try this: **take 5 slow breaths** — inhale for 4 seconds, hold for 4, exhale for 6.
+
+Would you like to tell me more about what's stressing you?",False
+2026-04-02T16:05:10.459986,test-relationship,I had a big fight with my parents and I feel terrible,"I appreciate you reaching out 🌿 I'm here to help with stress, anxiety, sleep, sadness, anger, motivation, relationships, and emotional wellbeing.
+
+Could you tell me a bit more about how you're feeling? I'd like to help.",False
+2026-04-02T16:08:02.535659,c76c68fb-7245-435a-8640-36ffd527d107,hii,"Hey there 🌿 I'm Sage, your mental wellness companion.
+
+You can talk to me about **stress, anxiety, sleep, sadness, anger, motivation, relationships**, or anything on your mind.
+
+How are you feeling today?",False
+2026-04-02T16:08:09.129758,c76c68fb-7245-435a-8640-36ffd527d107,sucide,"I appreciate you reaching out 🌿 I'm here to help with stress, anxiety, sleep, sadness, anger, motivation, relationships, and emotional wellbeing.
+
+Could you tell me a bit more about how you're feeling? I'd like to help.",False
+2026-04-02T16:08:23.408699,c76c68fb-7245-435a-8640-36ffd527d107,i am feelimg to sucide,"I appreciate you reaching out 🌿 I'm here to help with stress, anxiety, sleep, sadness, anger, motivation, relationships, and emotional wellbeing.
+
+Could you tell me a bit more about how you're feeling? I'd like to help.",False
+2026-04-02T16:14:21.056318,crisis-typo,i am feeling to sucide,"I'm really sorry you're feeling this way. You matter, and you deserve support. 💚
+
+**Please reach out to someone right now:**
+
+📞 **India:** 9152987821 (iCall) · 1800-599-0019 (Vandrevala Foundation)
+📞 **USA/Canada:** 988 (Suicide & Crisis Lifeline)
+📞 **UK/Ireland:** 116 123 (Samaritans)
+
+Please don't stay alone with this feeling. Talk to a trusted person — a family member, friend, teacher, or call the helplines above.
+
+If you'd like, you can tell me what happened in one sentence, and we can take things one small step at a time. I'm here for you. 🌿",True
+2026-04-02T16:14:52.857574,generic-1,my life feels really empty and meaningless,I'm happy I could help 🌿 You took a really positive step just by reaching out. Feel free to come back anytime.,False
+2026-04-02T16:15:23.784993,relationship-1,I had a huge fight with my boyfriend,"When someone close to us hurts us, it can feel overwhelming. **Give yourself permission to feel what you're feeling** — you don't have to resolve it all at once.
+
+What's been the hardest part of this situation for you?",False
+2026-04-02T16:15:54.507940,random-1,I feel like nobody listens to me,"It's completely okay to talk about this. **You don't have to go through it alone.**
+
+Help me understand what you're going through — what happened, or what's been bothering you?",False
+2026-04-02T16:16:25.237695,thanks-1,thank you so much that really helped,I'm happy I could help 🌿 You took a really positive step just by reaching out. Feel free to come back anytime.,False

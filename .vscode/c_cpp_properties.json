@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Users/HP/AppData/Local/Programs/Python/Python311/include",
+                "C:/Users/HP/Downloads/Mental_Health_Chatbot/venv/Lib/site-packages"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\Users\\HP\\Downloads\\x86_64-15.2.0-release-posix-seh-ucrt-rt_v13-rev0\\mingw64\\bin\\gcc.exe",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}

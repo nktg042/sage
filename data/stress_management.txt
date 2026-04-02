@@ -1,0 +1,101 @@
+Stress Management Guidance for Mental Health Chatbot
+
+1. What is Stress?
+
+Stress is the body’s natural reaction to pressure, challenges, or
+difficult situations. A small amount of stress can motivate a person,
+but too much stress affects mood, focus, sleep, and overall mental
+health. A Mental Health Chatbot helps users identify stress and supports
+them with healthy coping strategies.
+
+------------------------------------------------------------------------
+
+2. Common Causes of Stress
+
+-   Academic workload or exams
+-   Personal conflicts
+-   Overthinking
+-   Social pressure or expectations
+-   Time management problems
+-   Financial concerns
+-   Future uncertainty
+-   Lack of sleep or routine
+
+------------------------------------------------------------------------
+
+3. Symptoms of Stress
+
+-   Feeling overwhelmed
+-   Irritability or mood swings
+-   Difficulty concentrating
+-   Headache or body tension
+-   Anxiety or restlessness
+-   Trouble sleeping
+-   Feeling demotivated
+
+------------------------------------------------------------------------
+
+4. Stress Management Techniques (Chatbot Guidance)
+
+A. Deep Breathing Exercise
+
+“Take a slow, deep breath in for 4 seconds… hold for 2 seconds… and
+exhale for 6 seconds. Repeat 5 times.”
+
+B. Grounding Technique (5-4-3-2-1 Method)
+
+“Identify 5 things you can see, 4 you can touch, 3 you can hear, 2 you
+can smell, and 1 you can taste.”
+
+C. Break Tasks Into Small Steps
+
+Helps reduce overwhelm.
+
+D. Positive Self-talk
+
+Encouraging phrases to calm the mind.
+
+E. Movement or Short Walk
+
+Reduces stress and relaxes the body.
+
+F. Mindfulness Reminder
+
+Focus on the present moment rather than the future.
+
+------------------------------------------------------------------------
+
+5. When the Chatbot Should Suggest Professional Help
+
+-   Stress continues for weeks
+-   Daily functioning is affected
+-   Severe sleep/appetite issues
+-   Panic attacks
+-   High emotional distress
+
+Suggested Bot Response:
+
+“I’m here to support you, but speaking with a mental health professional
+can provide deeper help. Would you like assistance finding resources?”
+
+------------------------------------------------------------------------
+
+6. Ideal Chatbot Response Style
+
+-   Empathetic
+-   Non-judgmental
+-   Simple and clear
+-   Supportive tone
+-   Safe guidance without medical claims
+
+Example Tone:
+“I understand this feels tough. You’re not alone. Let’s try something
+calming together.”
+
+------------------------------------------------------------------------
+
+7. Conclusion
+
+This Stress Management module helps the Mental Health Chatbot detect
+stress-related messages and respond with calming techniques, support,
+and safe guidance. It improves the chatbot’s empathy and usefulness.

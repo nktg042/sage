@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MindEase — Your Mental Wellness Companion</title>
+  <meta name="description" content="Talk about stress, anxiety, or anything on your mind. MindEase is your 24/7 AI mental health companion."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+
+  <style>
+    .chat-app-layout {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    .chat-history-sidebar {
+      width: 290px;
+      background: rgba(9, 18, 14, 0.95);
+      border-right: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(14px);
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1200;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .chat-history-sidebar.open {
+      transform: translateX(0);
+    }
+
+    .chat-history-header {
+      padding: 18px 16px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sidebar-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .sidebar-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      color: #f0ede8;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .sidebar-close-btn:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .sidebar-logo {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f0ede8;
+    }
+
+    .sidebar-logo em {
+      color: #4ade80;
+      font-style: normal;
+    }
+
+    .new-chat-btn {
+      width: 100%;
+      border: 1px solid rgba(74, 222, 128, 0.35);
+      background: rgba(74, 222, 128, 0.12);
+      color: #dff7e7;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font: inherit;
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-align: left;
+    }
+
+    .new-chat-btn:hover {
+      background: rgba(74, 222, 128, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .chat-history-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .history-item {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #f0ede8;
+      border-radius: 14px;
+      padding: 12px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .history-item:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .history-item.active {
+      border-color: rgba(74, 222, 128, 0.45);
+      background: rgba(74, 222, 128, 0.12);
+    }
+
+    .history-title {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: #f6f3ee;
+      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .history-time {
+      font-size: 0.78rem;
+      color: #96a89b;
+    }
+
+    .chat-main-content {
+      width: 100%;
+    }
+
+    .empty-history {
+      color: #96a89b;
+      font-size: 0.9rem;
+      padding: 10px 6px;
+    }
+
+    .history-toggle-btn {
+      padding: 9px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(74, 222, 128, 0.35);
+      background: rgba(74, 222, 128, 0.12);
+      color: #dff7e7;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+      margin-right: 10px;
+    }
+
+    .history-toggle-btn:hover {
+      background: rgba(74, 222, 128, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .top-right-actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .history-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(3px);
+      z-index: 1100;
+      display: none;
+    }
+
+    .history-overlay.open {
+      display: block;
+    }
+
+    /* rotating emojis */
+    .emoji-orbit{
+      position:absolute;
+      top:50%;
+      left:50%;
+      font-size:24px;
+      transform-origin:center;
+      pointer-events:none;
+    }
+
+    .orbit1{
+      animation:orbit1 14s linear infinite;
+    }
+
+    .orbit2{
+      animation:orbit2 18s linear infinite reverse;
+    }
+
+    .orbit3{
+      animation:orbit3 22s linear infinite;
+    }
+
+    @keyframes orbit1{
+      from{
+        transform:translate(-50%,-50%) rotate(0deg) translateX(90px) rotate(0deg);
+      }
+      to{
+        transform:translate(-50%,-50%) rotate(360deg) translateX(90px) rotate(-360deg);
+      }
+    }
+
+    @keyframes orbit2{
+      from{
+        transform:translate(-50%,-50%) rotate(0deg) translateX(130px) rotate(0deg);
+      }
+      to{
+        transform:translate(-50%,-50%) rotate(360deg) translateX(130px) rotate(-360deg);
+      }
+    }
+
+    @keyframes orbit3{
+      from{
+        transform:translate(-50%,-50%) rotate(0deg) translateX(170px) rotate(0deg);
+      }
+      to{
+        transform:translate(-50%,-50%) rotate(360deg) translateX(170px) rotate(-360deg);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .history-toggle-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .chat-history-sidebar {
+        width: 85%;
+        max-width: 320px;
+      }
+
+      .top-right-actions {
+        gap: 8px;
+      }
+
+      .history-toggle-btn {
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="history-overlay" id="historyOverlay" onclick="closeHistory()"></div>
+
+<div class="chat-app-layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="chat-history-sidebar" id="historySidebar">
+    <div class="chat-history-header">
+      <div class="sidebar-top">
+        <div class="sidebar-logo">Mind<em>Ease</em> Chats</div>
+        <button class="sidebar-close-btn" onclick="closeHistory()">✕</button>
+      </div>
+
+      <button class="new-chat-btn" onclick="startNewChat()">+ New Chat</button>
+    </div>
+
+    <div class="chat-history-list" id="chatHistoryList">
+      <div class="empty-history">No chat history yet.</div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="chat-main-content">
+
+    <div class="bg-canvas" id="bgCanvas"></div>
+
+    <header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="#home" class="logo">
+          <span class="logo-icon">✦</span>
+          Mind<em>Ease</em>
+        </a>
+        <nav class="nav-links">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#resources" class="nav-link">Resources</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#mood" class="nav-link">Mood</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="top-right-actions">
+          <button class="history-toggle-btn" onclick="openHistory()">☰ History</button>
+          <button class="nav-cta" onclick="openChat()">Talk to Sage ↗</button>
+        </div>
+      </div>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="hero-bg-text" aria-hidden="true">MIND</div>
+
+      <div class="hero-inner">
+        <div class="hero-left reveal">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            AI-Powered · Available 24/7
+          </div>
+          <h1 class="hero-title">
+            Your mind deserves<br/>
+            <em>gentle care.</em>
+          </h1>
+          <p class="hero-sub">
+            Talk about stress, anxiety, or anything weighing on you —
+            in English or Hinglish. Sage listens without judgment.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="openChat()">
+              <span>Start talking</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+            <a href="#resources" class="btn-ghost">Explore resources</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><strong>10k+</strong><span>conversations</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><strong>4.9★</strong><span>user rating</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><strong>100%</strong><span>private</span></div>
+          </div>
+        </div>
+
+        <div class="hero-right reveal" style="animation-delay:0.15s">
+          <div class="hero-card">
+            <div class="card-glow"></div>
+            <div class="card-header">
+              <div class="card-avatar">S</div>
+              <div>
+                <p class="card-name">Sage</p>
+                <p class="card-status"><span class="pulse-dot"></span>Online now</p>
+              </div>
+            </div>
+            <div class="mini-chat">
+              <div class="mini-msg bot" style="animation-delay:0.4s">Hey, how are you feeling today? 🌿</div>
+              <div class="mini-msg user" style="animation-delay:0.9s">A little stressed about exams...</div>
+              <div class="mini-msg bot" style="animation-delay:1.4s">I hear you. Exam stress is really real. Let's talk through it — what's worrying you most right now?</div>
+            </div>
+            <div class="card-typing" style="animation-delay:2.2s">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <section id="resources" class="section resources-section">
+      <div class="section-inner">
+        <div class="section-label reveal">What we offer</div>
+        <h2 class="section-title reveal">Tools for your <em>wellbeing</em></h2>
+        <p class="section-sub reveal">Evidence-based techniques, delivered through conversation.</p>
+
+        <div class="resource-grid">
+          <div class="resource-card reveal" style="animation-delay:0.05s">
+            <div class="rc-icon">🌬️</div>
+            <h3>Stress Relief</h3>
+            <p>When stress feels overwhelming, Sage walks you through proven techniques like box breathing, the 5-4-3-2-1 grounding method, and progressive muscle relaxation.</p>
+            <div class="rc-tag">Breathing · Grounding</div>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:0.1s">
+            <div class="rc-icon">📚</div>
+            <h3>Study Pressure</h3>
+            <p>Exams, deadlines, and academic expectations can pile up fast. Sage helps you break through mental blocks and manage pre-exam nerves.</p>
+            <div class="rc-tag">Focus · Anxiety</div>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:0.15s">
+            <div class="rc-icon">💬</div>
+            <h3>Emotional Support</h3>
+            <p>Sometimes you just need to talk — without judgment. Sage listens in both English and Hinglish.</p>
+            <div class="rc-tag">Bilingual · Empathy</div>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:0.2s">
+            <div class="rc-icon">🌙</div>
+            <h3>Sleep Support</h3>
+            <p>A restless mind can make sleep feel impossible. Sage guides you through calming wind-down routines and relaxation.</p>
+            <div class="rc-tag">Sleep · Calm</div>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:0.25s">
+            <div class="rc-icon">🧘</div>
+            <h3>Mindfulness</h3>
+            <p>Small moments of presence add up. Sage offers bite-sized mindfulness practices that fit real life.</p>
+            <div class="rc-tag">Meditation · Presence</div>
+          </div>
+          <div class="resource-card reveal" style="animation-delay:0.3s">
+            <div class="rc-icon">📓</div>
+            <h3>Guided Journaling</h3>
+            <p>Sage offers thoughtful prompts to help you untangle complicated feelings and reflect with clarity.</p>
+            <div class="rc-tag">Reflection · Growth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="section-inner about-inner">
+        <div class="about-left reveal">
+          <div class="section-label">Our mission</div>
+          <h2 class="section-title">Mental health support,<br/><em>for everyone.</em></h2>
+          <p class="about-body">
+            MindEase was built with one belief: everyone deserves access to compassionate mental health support.
+          </p>
+          <p class="about-body">
+            Whether you're dealing with exam stress, family pressure, loneliness, or just a rough day — Sage speaks your language.
+          </p>
+        </div>
+        <div class="about-right reveal" style="animation-delay:0.1s">
+          <div class="about-visual">
+            <div class="av-ring av-ring-1"></div>
+            <div class="av-ring av-ring-2"></div>
+            <div class="av-ring av-ring-3"></div>
+
+            <div class="emoji-orbit orbit1">😊</div>
+            <div class="emoji-orbit orbit2">🧘</div>
+            <div class="emoji-orbit orbit3">💬</div>
+
+            <div class="av-center">
+              <span class="av-emoji">🌿</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mood" class="section mood-section">
+      <div class="section-inner">
+        <div class="section-label reveal">Daily Check-In</div>
+        <h2 class="section-title reveal">Track your <em>mood</em></h2>
+        <p class="section-sub reveal">
+          Your mood is automatically detected from your chat messages.
+          Just talk to the chatbot and your mood trend will update.
+        </p>
+
+        <div class="mood-card reveal" style="animation-delay:0.05s">
+          <h3 class="mood-title">Mood is tracked automatically from chat</h3>
+
+          <div class="mood-buttons">
+            <button class="mood-btn" type="button" disabled>😊 Happy</button>
+            <button class="mood-btn" type="button" disabled>😌 Calm</button>
+            <button class="mood-btn" type="button" disabled>😔 Sad</button>
+            <button class="mood-btn" type="button" disabled>😟 Anxious</button>
+            <button class="mood-btn clear-mood-btn" type="button" onclick="clearMoodData()">🗑 Clear History</button>
+          </div>
+
+          <div class="mood-status">
+            <p id="mood-status">No mood saved yet.</p>
+          </div>
+
+          <div class="mood-chart-wrap">
+            <canvas id="moodChart"></canvas>
+          </div>
+
+          <div class="mood-history">
+            <h4>Recent moods</h4>
+            <ul id="mood-history-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <div class="section-inner">
+        <div class="section-label reveal">Get in touch</div>
+        <h2 class="section-title reveal">We're <em>here</em> for you</h2>
+
+        <div class="contact-grid">
+          <div class="contact-card reveal" style="animation-delay:0.05s">
+            <div class="cc-icon">✉️</div>
+            <h3>Email</h3>
+            <p>support@mindease.ai</p>
+          </div>
+          <div class="contact-card reveal" style="animation-delay:0.1s">
+            <div class="cc-icon">📞</div>
+            <h3>Phone</h3>
+            <p>+91 98765 43210</p>
+          </div>
+          <div class="contact-card reveal crisis-card" style="animation-delay:0.15s">
+            <div class="cc-icon">🆘</div>
+            <h3>Crisis Helpline</h3>
+            <p>iCall India: 9152987821</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span class="logo-icon">✦</span> Mind<em>Ease</em>
+        </div>
+        <p class="footer-note">
+          Sage is an AI companion, not a licensed therapist.
+          In crisis? Call <a href="tel:9152987821">iCall: 9152987821</a>
+        </p>
+      </div>
+    </footer>
+
+    <button class="chat-fab" onclick="openChat()" id="chatFab" aria-label="Open chat">
+      <span class="fab-icon">💬</span>
+      <span class="fab-pulse"></span>
+    </button>
+
+    <div class="chat-overlay" id="chatOverlay" onclick="closeChat()"></div>
+
+    <div class="chat-modal-wrap" id="chatModalWrap">
+      <div class="chat-widget chat-centered" id="chatWidget">
+        <div class="chat-header">
+          <div class="ch-left">
+            <div class="ch-avatar">S</div>
+            <div>
+              <p class="ch-name">Sage</p>
+              <p class="ch-status"><span class="pulse-dot small"></span>Here for you</p>
+            </div>
+          </div>
+          <div class="ch-actions">
+            <button class="ch-btn" onclick="clearChat()" title="New conversation">↺</button>
+            <button class="ch-btn" onclick="closeChat()" title="Close">✕</button>
+          </div>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+          <div class="breathing-box" id="breathingBox">
+            <h3 class="breathing-title">Breathing Exercise</h3>
+            <div id="breathingCircle">Breathe</div>
+            <p id="breathingText">Tap the button and relax for a few seconds 🌿</p>
+            <button class="breathing-start-btn" onclick="runBreathingCycle()">Start Exercise</button>
+            <button class="breathing-close-btn" onclick="closeBreathing()">Close</button>
+          </div>
+        </div>
+
+        <div class="chat-chips" id="chatChips">
+          <button class="chip" onclick="sendChip(this)">Feeling stressed 😟</button>
+          <button class="chip" onclick="sendChip(this)">Exam anxiety 📚</button>
+          <button class="chip" onclick="sendChip(this)">Can't sleep 🌙</button>
+          <button class="chip" onclick="sendChip(this)">Just want to talk 💬</button>
+          <button class="chip" onclick="startBreathing()">Breathing exercise 🧘</button>
+        </div>
+
+        <div class="chat-input-area">
+          <textarea
+            id="userInput"
+            placeholder="Share what's on your mind…"
+            rows="1"
+            oninput="autoResize(this)"
+          ></textarea>
+          <button class="send-btn" onclick="sendMessage()" id="sendBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+
+        <p class="chat-disclaimer">
+          Not a substitute for professional help. Crisis? Call <a href="tel:9152987821" style="color:var(--accent)">iCall 9152987821</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function openHistory() {
+    document.getElementById("historySidebar").classList.add("open");
+    document.getElementById("historyOverlay").classList.add("open");
+  }
+
+  function closeHistory() {
+    document.getElementById("historySidebar").classList.remove("open");
+    document.getElementById("historyOverlay").classList.remove("open");
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="chatbot_v2.js"></script>
+</body>
+</html>
