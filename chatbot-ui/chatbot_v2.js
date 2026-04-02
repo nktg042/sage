@@ -181,7 +181,10 @@ async function loadSessions() {
   if (!list) return;
 
   try {
-    const res = await fetch(SESSIONS_API_URL);
+    const token = localStorage.getItem("mindease_token");
+    const headers = {};
+    if (token) headers["Authorization"] = "Bearer " + token;
+    const res = await fetch(SESSIONS_API_URL, { headers });
     const data = await res.json();
 
     if (!Array.isArray(data) || data.length === 0) {
@@ -218,7 +221,10 @@ async function loadSession(sessionId) {
   localStorage.setItem("mindEaseSession", currentSessionId);
 
   try {
-    const res = await fetch(`${SESSIONS_API_URL}/${sessionId}`);
+    const token = localStorage.getItem("mindease_token");
+    const headers = {};
+    if (token) headers["Authorization"] = "Bearer " + token;
+    const res = await fetch(`${SESSIONS_API_URL}/${sessionId}`, { headers });
     const messages = await res.json();
 
     chatBody.innerHTML = "";
@@ -420,9 +426,13 @@ async function sendText(text) {
   showTyping();
 
   try {
+    const token = localStorage.getItem("mindease_token");
+    const headers = { "Content-Type": "application/json" };
+    if (token) headers["Authorization"] = "Bearer " + token;
+
     const res = await fetch(API_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: headers,
       body: JSON.stringify({
         query: text,
         session_id: currentSessionId,
@@ -874,4 +884,160 @@ function initParticles() {
     `;
     document.head.appendChild(style);
   }
+}
+
+/* ── AUTHENTICATION ───────────────────────────────────── */
+let isLoginMode = true;
+
+function openAuthModal() {
+  document.getElementById("authOverlay").style.display = "block";
+  document.getElementById("authModal").style.display = "block";
+  document.getElementById("authErrorMsg").style.display = "none";
+}
+
+function closeAuthModal() {
+  document.getElementById("authOverlay").style.display = "none";
+  document.getElementById("authModal").style.display = "none";
+}
+
+function toggleAuthMode() {
+  isLoginMode = !isLoginMode;
+  document.getElementById("authTitle").innerText = isLoginMode ? "Welcome Back" : "Create Account";
+  document.getElementById("authSubmitBtn").innerText = isLoginMode ? "Log In" : "Register";
+  document.getElementById("authSwitchBtn").innerText = isLoginMode ? "Need an account? Register" : "Already have an account? Log In";
+  document.getElementById("authErrorMsg").style.display = "none";
+}
+
+async function submitAuth() {
+  const u = document.getElementById("authUsername").value.trim();
+  const p = document.getElementById("authPassword").value.trim();
+  const err = document.getElementById("authErrorMsg");
+  
+  if(u.length < 3 || p.length < 6) {
+    err.innerText = "Username min 3 chars, Password min 6 chars.";
+    err.style.display = "block";
+    return;
+  }
+  
+  const endpoint = isLoginMode ? "http://127.0.0.1:8000/login" : "http://127.0.0.1:8000/register";
+  document.getElementById("authSubmitBtn").innerText = "Loading...";
+  try {
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({username: u, password: p})
+    });
+    
+    const data = await res.json();
+    if(res.ok) {
+      if(isLoginMode) {
+        localStorage.setItem("mindease_token", data.access_token);
+        localStorage.setItem("mindease_user", data.username);
+        document.getElementById("authNavBtn").innerText = "Logout (" + data.username + ")";
+        document.getElementById("authNavBtn").onclick = logout;
+        closeAuthModal();
+        loadSessions();
+      } else {
+        err.innerText = "Registered! Logging you in...";
+        err.style.color = "var(--accent)";
+        err.style.display = "block";
+        setTimeout(() => { toggleAuthMode(); submitAuth(); }, 1000);
+      }
+    } else {
+      err.innerText = data.detail || "Error occurred";
+      err.style.color = "#f87171";
+      err.style.display = "block";
+    }
+  } catch(e) {
+    err.innerText = "Server error. Please try again.";
+    err.style.display = "block";
+  } finally {
+    document.getElementById("authSubmitBtn").innerText = isLoginMode ? "Log In" : "Register";
+  }
+}
+
+function logout() {
+  localStorage.removeItem("mindease_token");
+  localStorage.removeItem("mindease_user");
+  document.getElementById("authNavBtn").innerText = "Login / Register";
+  document.getElementById("authNavBtn").onclick = openAuthModal;
+  document.getElementById("chatHistoryList").innerHTML = "";
+  clearChat();
+}
+
+// Restore auth & SW
+window.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("mindease_token");
+  const user = localStorage.getItem("mindease_user");
+  if(token && user) {
+    const navBtn = document.getElementById("authNavBtn");
+    if(navBtn) {
+      navBtn.innerText = "Logout (" + user + ")";
+      navBtn.onclick = logout;
+    }
+  }
+  
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+  }
+});
+
+/* ── WEB SPEECH API ───────────────────────────────────── */
+let recognition = null;
+let isRecording = false;
+
+if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.lang = "en-IN";
+  
+  recognition.onresult = (event) => {
+    document.getElementById("userInput").value = event.results[0][0].transcript;
+    sendMessage();
+  };
+  
+  recognition.onend = () => {
+    isRecording = false;
+    const mb = document.getElementById("micBtn");
+    if(mb) { mb.style.background="var(--surface-2)"; mb.style.boxShadow="none"; }
+  };
+}
+
+function toggleVoiceInput() {
+  if (!recognition) return alert("Voice input not supported here.");
+  const mb = document.getElementById("micBtn");
+  if (isRecording) {
+    recognition.stop();
+  } else {
+    recognition.start();
+    isRecording = true;
+    mb.style.background = "#ef4444";
+    mb.style.boxShadow = "0 0 12px rgba(239, 68, 68, 0.4)";
+  }
+}
+
+/* ── PDF EXPORT ───────────────────────────────────────── */
+function exportChatToPDF() {
+  const box = document.getElementById("chatBody");
+  if (!box || !window.html2pdf) return alert("Export not ready.");
+  
+  const el = box.cloneNode(true);
+  el.style.background = "#fff"; el.style.color = "#000"; el.style.padding = "20px";
+  el.style.height="auto"; el.style.overflow="visible";
+  
+  const b1 = el.querySelector("#breathingBox"); if(b1) b1.remove();
+  const b2 = el.querySelector("#typingIndicator"); if(b2) b2.remove();
+  
+  el.querySelectorAll(".bubble").forEach(b => {
+    b.style.color="#000"; b.style.border="1px solid #ddd"; 
+    b.style.background="#fafafa"; b.style.boxShadow="none";
+  });
+  
+  html2pdf().set({
+    margin:0.5, filename:`MindEase_${Date.now()}.pdf`,
+    image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2},
+    jsPDF:{unit:'in',format:'letter',orientation:'portrait'}
+  }).from(el).save();
 }
