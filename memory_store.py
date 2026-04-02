@@ -15,21 +15,37 @@ _db = None
 def get_db():
     global _client, _db
     if _client is None:
+        print("[MindEase] Connecting to MongoDB Cluster...")
         if not MONGO_URI:
-            print("[Warning] MONGO_URI is missing from .env, falling back to localhost.")
-            _client = MongoClient("mongodb://localhost:27017/")
+            print("[Warning] No MONGO_URI found in .env, attempting local connection.")
+            _client = MongoClient("mongodb://localhost:27017/", serverSelectionTimeoutMS=2000)
         else:
             _client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000, tlsCAFile=certifi.where())
+        
+        try:
+            # Force a connection test
+            _client.admin.command('ping')
+            print("[MindEase] Successfully connected to MongoDB.")
+        except Exception as e:
+            print(f"[MindEase] Failed to connect to MongoDB: {e}")
+            raise e
+        
         _db = _client.get_database("mindease_db")
     return _db
 
 
 def init_db():
-    db = get_db()
-    db.chat_history.create_index([("session_id", 1)])
-    db.chat_history.create_index([("created_at", -1)])
-    db.chat_history.create_index([("username", 1)])
-    db.users.create_index([("username", 1)], unique=True)
+    print("[MindEase] Checking/Initializing database indexes...")
+    try:
+        db = get_db()
+        # Single index for query efficiency
+        db.chat_history.create_index([("username", 1), ("created_at", -1)])
+        db.chat_history.create_index([("session_id", 1), ("created_at", 1)])
+        db.users.create_index([("username", 1)], unique=True)
+        print("[MindEase] Database initialization complete.")
+    except Exception as e:
+        print(f"[MindEase] init_db failed: {e}")
+        pass
 
 
 # ── Auth & Users ───────────────────────────────────────────────────

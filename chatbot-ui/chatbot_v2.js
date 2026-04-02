@@ -1,5 +1,5 @@
-const API_URL = "http://127.0.0.1:8000/chat";
-const SESSIONS_API_URL = "http://127.0.0.1:8000/sessions";
+const API_URL = `http://${window.location.hostname}:8000/chat`;
+const SESSIONS_API_URL = `http://${window.location.hostname}:8000/sessions`;
 
 /* ── CONTEXTUAL CHIP SETS ───────────────────────────────── */
 const CHIP_SETS = {
@@ -108,9 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ── WELCOME MESSAGE ───────────────────────────────────── */
 function showWelcomeMessage() {
+  const user = localStorage.getItem("mindease_user");
+  const name = user && user !== "anonymous" ? user : "friend";
   appendMessage(
     "bot",
-    "Hey there 🌿 I'm <strong>Sage</strong>, your mental wellness companion.<br><br>This is a safe, judgment-free space. You can talk to me about <strong>stress, anxiety, sleep, sadness, relationships, motivation</strong> — or anything on your mind.<br><br>How are you feeling today?"
+    `Hi **${name}**! 🌿 I'm **Sage**, your mental wellness companion.<br><br>This is a safe, judgment-free space. You can talk to me about **stress, anxiety, sleep, sadness, relationships, motivation** — or anything on your mind.<br><br>How are you feeling today?`
   );
 }
 
@@ -919,8 +921,8 @@ async function submitAuth() {
     return;
   }
   
-  const endpoint = isLoginMode ? "http://127.0.0.1:8000/login" : "http://127.0.0.1:8000/register";
-  document.getElementById("authSubmitBtn").innerText = "Loading...";
+  const endpoint = `http://${window.location.hostname}:8000/${isLoginMode ? 'login' : 'register'}`;
+  document.getElementById("authSubmitBtn").innerText = "Please wait...";
   try {
     const res = await fetch(endpoint, {
       method: "POST",
@@ -933,23 +935,31 @@ async function submitAuth() {
       if(isLoginMode) {
         localStorage.setItem("mindease_token", data.access_token);
         localStorage.setItem("mindease_user", data.username);
-        document.getElementById("authNavBtn").innerText = "Logout (" + data.username + ")";
-        document.getElementById("authNavBtn").onclick = logout;
+        // Change nav text
+        const navBtn = document.getElementById("authNavBtn");
+        if(navBtn) {
+          navBtn.innerText = `Logout (${data.username})`;
+          navBtn.classList.add("logged-in");
+        }
         closeAuthModal();
-        loadSessions();
+        loadSessions(); // Sync chat logs
       } else {
         err.innerText = "Registered! Logging you in...";
-        err.style.color = "var(--accent)";
+        err.style.color = "#4ade80";
         err.style.display = "block";
-        setTimeout(() => { toggleAuthMode(); submitAuth(); }, 1000);
+        // Auto trigger login
+        setTimeout(() => { 
+          isLoginMode = true; 
+          submitAuth(); 
+        }, 800);
       }
     } else {
-      err.innerText = data.detail || "Error occurred";
+      err.innerText = data.detail || "Credentials failed";
       err.style.color = "#f87171";
       err.style.display = "block";
     }
   } catch(e) {
-    err.innerText = "Server error. Please try again.";
+    err.innerText = "Server unreachable. Try again.";
     err.style.display = "block";
   } finally {
     document.getElementById("authSubmitBtn").innerText = isLoginMode ? "Log In" : "Register";
@@ -959,9 +969,13 @@ async function submitAuth() {
 function logout() {
   localStorage.removeItem("mindease_token");
   localStorage.removeItem("mindease_user");
-  document.getElementById("authNavBtn").innerText = "Login / Register";
-  document.getElementById("authNavBtn").onclick = openAuthModal;
-  document.getElementById("chatHistoryList").innerHTML = "";
+  const navBtn = document.getElementById("authNavBtn");
+  if(navBtn) {
+    navBtn.innerText = "Login / Register";
+    navBtn.classList.remove("logged-in");
+    navBtn.onclick = openAuthModal;
+  }
+  document.getElementById("chatHistoryList").innerHTML = `<div class="empty-history">Log in to see history.</div>`;
   clearChat();
 }
 
@@ -975,10 +989,11 @@ window.addEventListener("DOMContentLoaded", () => {
       navBtn.innerText = "Logout (" + user + ")";
       navBtn.onclick = logout;
     }
+    loadSessions(); // Load history on startup
   }
   
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js');
+    navigator.serviceWorker.register('./sw.js').catch(e => console.log("SW error:", e));
   }
 });
 

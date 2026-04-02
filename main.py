@@ -23,7 +23,8 @@ from memory_store import (
 
 load_dotenv()
 
-init_db()
+# We will init_db() inside the startup event to avoid blocking module load
+# init_db() moved to @app.on_event("startup")
 
 app = FastAPI(
     title="MindEase — AI-Powered Mental Health Chatbot API",
@@ -134,6 +135,16 @@ def chat_with_memory(request: ChatRequest, username: str = Depends(get_current_u
         is_crisis=False,
     )
 
+
+@app.on_event("startup")
+async def startup_event():
+    print("[MindEase] Backend server is starting up...")
+    try:
+        init_db()
+        print("[MindEase] MongoDB connection initialized successfully.")
+    except Exception as e:
+        print(f"[MindEase] CRITICAL: FAILED to connect to MongoDB: {e}")
+        print("[MindEase] Please check your MONGO_URI and IP whitelist in Atlas.")
 
 @app.post("/chat/new")
 def new_chat():
