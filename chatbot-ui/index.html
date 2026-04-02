@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="manifest" href="manifest.json"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
     .chat-app-layout {
@@ -264,6 +266,17 @@
 
 <div class="history-overlay" id="historyOverlay" onclick="closeHistory()"></div>
 
+<!-- AUTH MODAL -->
+<div class="history-overlay" id="authOverlay" onclick="closeAuthModal()"></div>
+<div class="chat-widget chat-centered auth-modal" id="authModal" style="height:auto; width:340px; padding:24px; z-index:1500; display:none;">
+  <h2 id="authTitle" style="color:var(--text-1); margin:0 0 16px;">Welcome Back</h2>
+  <input type="text" id="authUsername" placeholder="Username" style="width:100%; padding:12px; margin-bottom:12px; border-radius:12px; border:1px solid var(--border-2); background:var(--surface); color:var(--text-1); box-sizing:border-box; outline:none; font-family:inherit;">
+  <input type="password" id="authPassword" placeholder="Password" style="width:100%; padding:12px; margin-bottom:20px; border-radius:12px; border:1px solid var(--border-2); background:var(--surface); color:var(--text-1); box-sizing:border-box; outline:none; font-family:inherit;">
+  <button class="new-chat-btn" id="authSubmitBtn" onclick="submitAuth()" style="width:100%; text-align:center; background:var(--accent); color:var(--bg); margin-bottom:12px; font-weight:600;">Log In</button>
+  <button class="history-toggle-btn" id="authSwitchBtn" onclick="toggleAuthMode()" style="width:100%; margin:0; border:none; background:transparent; color:var(--accent);">Need an account? Register</button>
+  <p id="authErrorMsg" style="color:#f87171; font-size:12px; text-align:center; margin-top:12px; display:none;"></p>
+</div>
+
 <div class="chat-app-layout">
 
   <!-- LEFT SIDEBAR -->
@@ -295,10 +308,9 @@
         </a>
         <nav class="nav-links">
           <a href="#home" class="nav-link">Home</a>
+          <a href="admin.html" class="nav-link">Admin Dashboard</a>
           <a href="#resources" class="nav-link">Resources</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#mood" class="nav-link">Mood</a>
-          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#" class="nav-link" id="authNavBtn" onclick="openAuthModal()">Login / Register</a>
         </nav>
 
         <div class="top-right-actions">
@@ -537,6 +549,7 @@
             </div>
           </div>
           <div class="ch-actions">
+            <button class="ch-btn" onclick="exportChatToPDF()" title="Export PDF">📥</button>
             <button class="ch-btn" onclick="clearChat()" title="New conversation">↺</button>
             <button class="ch-btn" onclick="closeChat()" title="Close">✕</button>
           </div>
@@ -561,6 +574,9 @@
         </div>
 
         <div class="chat-input-area">
+          <button class="send-btn" onclick="toggleVoiceInput()" id="micBtn" style="background:var(--surface-2); color:var(--accent);" title="Voice Input">
+            🎤
+          </button>
           <textarea
             id="userInput"
             placeholder="Share what's on your mind…"
