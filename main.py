@@ -145,5 +145,7 @@ def new_chat():
 # ── Admin Routes ───────────────────────────────────────────────────────
 
 @app.get("/admin/stats")
-def admin_stats():
+def admin_stats(username: str = Depends(get_current_user)):
+    if username != "admin":
+        raise HTTPException(status_code=403, detail="Not authorized. Admin only.")
     return get_admin_stats()

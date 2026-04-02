@@ -60,7 +60,11 @@
           document.getElementById('messagesVal').innerText = data.messages;
           document.getElementById('crisesVal').innerText = data.crises;
         } else {
-          document.getElementById('statsGrid').innerHTML = `<p style="text-align:center; width:100%; color:#f87171;">Failed to load stats. Ensure API is running.</p>`;
+          if (res.status === 403) {
+            document.getElementById('statsGrid').innerHTML = `<p style="text-align:center; width:100%; color:#ef4444; font-size:20px;">🔒 Access Denied. You must log in as 'admin'.</p>`;
+          } else {
+            document.getElementById('statsGrid').innerHTML = `<p style="text-align:center; width:100%; color:#f87171;">Failed to load stats. Ensure API is running.</p>`;
+          }
         }
       } catch (err) {
         console.error(err);
