@@ -1,28 +1,31 @@
 # Sage 🌿 - AI-Powered Mental Health Companion
 
-MindEase (Sage) is a professional, empathetic, and responsive AI mental health companion. Powered by **Google Gemini API** and built on a high-performance **FastAPI** backend, Sage offers conversational support, mindfulness exercises, and compassionate guidance in both English and Hinglish.
+MindEase (Sage) is a professional, empathetic, and highly responsive AI mental health companion. Powered by **Google Gemini AI** and built on a high-performance **FastAPI** backend with **MongoDB Atlas** for secure cloud storage, Sage offers conversational support, mindfulness exercises, and compassionate guidance in both English and Hinglish.
 
 ## ✨ Features
 
-- **Empathetic Conversational AI:** Completely driven by Google's Gemini LLM with a deeply crafted system prompt ensuring non-judgmental, evidence-based responses.
-- **Crisis Detection System:** Robust word-boundary keyword filtering (with typo support) for immediate detection of severe distress. Instantly provides global mental health helpline numbers.
-- **Markdown & Interactive UI:** A stunning locally-hosted vanilla JS/CSS frontend interface rendering bold text, lists, and embedded links.
-- **Bilingual Capabilities:** Conversations naturally flow in both English and Hinglish depending on user input.
-- **Rich User Experience:** Includes dynamic suggestion chips, typing indicators, animated "breathing" exercises, and an integrated mood tracker with a data chart.
-- **Chat Memory:** Context retention across conversations within a session using SQLite.
+- **Empathetic Conversational AI:** Driven by Google's Gemini LLM with a deeply crafted system prompt ensuring non-judgmental, evidence-based responses.
+- **Secure User Accounts (JWT):** Full authentication system allowing users to securely track and access their personal conversation history across sessions.
+- **Voice Support (Speech-to-Text):** Integrated Web Speech API allows you to talk directly to Sage using your microphone.
+- **Crisis Detection System:** Robust word-boundary keyword filtering (with typo support) for immediate detection of severe distress. Instantly provides offline emergency helplines.
+- **Export Chats to PDF:** Generate and download a clean PDF transcript of your counseling session for your personal records with a single click.
+- **Progressive Web App (PWA):** MindEase is installable directly to your mobile or desktop device's home screen for app-like offline UI behavior.
+- **Live Admin Dashboard:** Contains an analytics endpoint to view real-time platform statistics (total users, total messages, active sessions).
 
 ## 🛠️ Technology Stack
 
-- **Backend:** Python, FastAPI, Uvicorn, SQLite
-- **AI Integration:** `google-generativeai` SDK (Gemini 2.0 Flash)
-- **Frontend:** Vanilla HTML, CSS, JavaScript
-- **Data Visualization:** Chart.js (for Mood Tracker)
+- **Backend:** Python, FastAPI, Uvicorn, PyJWT, Bcrypt
+- **Database:** MongoDB Atlas (via `pymongo`)
+- **AI Integration:** `google-generativeai` SDK
+- **Frontend:** Vanilla HTML, CSS, JavaScript (Local Storage, Service Workers)
+- **Data Visualization & Export:** Chart.js, html2pdf.js
 
 ## 🚀 Getting Started
 
 ### 1. Prerequisites
 - Python 3.9+
-- A Google Gemini API Key. You can get one from [Google AI Studio](https://aistudio.google.com/).
+- A [Google Gemini API Key](https://aistudio.google.com/)
+- A [MongoDB Atlas Cluster URI](https://cloud.mongodb.com/)
 
 ### 2. Installation
 
@@ -48,10 +51,14 @@ pip install -r requirements.txt
 ```
 
 ### 3. Configuration
-Create a `.env` file in the root directory and add your Google Gemini API Key:
+Create a `.env` file in the root directory and add your API Keys:
 ```env
 GEMINI_API_KEY=your_actual_api_key_here
+MONGO_URI=mongodb+srv://username:password@cluster0.mongodb.net/?appName=Cluster0
+JWT_SECRET=your_super_secret_string # (Optional, defaults to a local key)
 ```
+
+**Important:** You must add your computer's IP address to the "Network Access" section in your MongoDB Atlas dashboard, otherwise the server will fail to connect.
 
 ### 4. Run the Application
 
@@ -61,7 +68,7 @@ python -m uvicorn main:app --reload
 ```
 The server will run at `http://127.0.0.1:8000`.
 
-To view the chatbot interface, simply open the `chatbot-ui/index.html` file in your web browser.
+To view the chatbot interface, simply open the `chatbot-ui/index.html` file in your web browser. To view the internal analytics dashboard, open `chatbot-ui/admin.html`.
 
 ## ⚠️ Disclaimer
 
