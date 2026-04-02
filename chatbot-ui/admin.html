@@ -49,8 +49,9 @@
   <script>
     async function loadStats() {
       try {
+        const host = window.location.hostname || "127.0.0.1";
         const token = localStorage.getItem('mindease_token');
-        const res = await fetch('http://127.0.0.1:8000/admin/stats', {
+        const res = await fetch(`http://${host}:8000/admin/stats`, {
           headers: token ? { 'Authorization': 'Bearer ' + token } : {}
         });
         const data = await res.json();

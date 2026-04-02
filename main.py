@@ -95,39 +95,48 @@ def read_session(session_id: str, username: str = Depends(get_current_user)):
 
 @app.post("/chat", response_model=ChatResponse)
 def chat_with_memory(request: ChatRequest, username: str = Depends(get_current_user)):
+    print(f"[MindEase] New message from {username} in session {request.session_id}")
     session_id = request.session_id or str(uuid4())
     user_query = request.query.strip() if request.query else ""
 
     if not user_query:
         raise HTTPException(status_code=400, detail="Query cannot be empty.")
 
-    if len(user_query) > 2000:
-        raise HTTPException(status_code=400, detail="Query is too long.")
-
-    # Crisis keyword check — safety net before AI
+    # Crisis keyword check 
     is_crisis = is_crisis_message(user_query)
     
     if is_crisis:
+        print("[MindEase] Crisis detected.")
         save_message(session_id, "user", user_query, username, is_crisis=False)
         save_message(session_id, "bot", SAFETY_MESSAGE, username, is_crisis=True)
-        log_chat(session_id, user_query, SAFETY_MESSAGE, True)
-        
         return ChatResponse(response=SAFETY_MESSAGE, session_id=session_id, is_crisis=True)
 
-    # Load recent history for context
-    history = get_recent_history(session_id, limit=20)
+    # Load recent history
+    print("[MindEase] Loading history...")
+    try:
+        history = get_recent_history(session_id, limit=20)
+        print(f"[MindEase] History loaded: {len(history)} messages.")
+    except Exception as e:
+        print(f"[MindEase] History loading failed: {e}")
+        history = []
 
     # Generate AI response
+    print("[MindEase] Generating AI response...")
     try:
         response = get_response(session_id, user_query, history)
+        print("[MindEase] AI Response generated.")
     except Exception as e:
-        print(f"[MindEase] Error generating response: {e}")
-        response = "I'm having a little trouble thinking right now, but I'm still here for you. 💚\n\nCould you try sending your message again?"
+        print(f"[MindEase] AI generation failed: {e}")
+        response = "I'm having a little trouble thinking right now. 💚"
 
-    # Save to MongoDB Database securely tied to the user
-    save_message(session_id, "user", user_query, username)
-    save_message(session_id, "bot", response, username)
-    log_chat(session_id, user_query, response, False)
+    # Save to MongoDB
+    print("[MindEase] Saving messages to Database...")
+    try:
+        save_message(session_id, "user", user_query, username)
+        save_message(session_id, "bot", response, username)
+        print("[MindEase] Messages saved.")
+    except Exception as e:
+        print(f"[MindEase] Saving messages failed: {e}")
 
     return ChatResponse(
         response=response,

@@ -458,3 +458,12 @@ What's been weighing on your mind the most? Even if it's hard to put into words,
 2026-04-02T17:06:53.261201,d80ce05d-5983-4a59-b706-ba42dcaa322e,hii,"That sounds tough. I hear you, and I want you to know your feelings are completely valid 💚 What's been the hardest part?",False
 2026-04-02T17:08:09.228288,test_session,I am feeling stressed,"It sounds like you're carrying a lot right now. When stress builds up, try taking 5 slow breaths. What's causing you the most stress lately?",False
 2026-04-02T17:10:17.183247,test_final,"Quick test, respond briefly","That sounds tough. I hear you, and I want you to know your feelings are completely valid 💚 What's been the hardest part?",False
+2026-04-02T17:13:18.745993,d80ce05d-5983-4a59-b706-ba42dcaa322e,hii,"That sounds tough. I hear you, and I want you to know your feelings are completely valid 💚 What's been the hardest part?",False
+2026-04-02T17:13:38.575746,d80ce05d-5983-4a59-b706-ba42dcaa322e,I was feeling depressed.,"I hear you, and whatever you're feeling right now is valid. Tell me more about what's been going on?",False
+2026-04-02T17:13:51.822036,d80ce05d-5983-4a59-b706-ba42dcaa322e,I feel lonely,"I hear you, and whatever you're feeling right now is valid. Tell me more about what's been going on?",False
+2026-04-02T17:14:15.943153,d80ce05d-5983-4a59-b706-ba42dcaa322e,I want to talk about it,"That sounds tough. I hear you, and I want you to know your feelings are completely valid 💚 What's been the hardest part?",False
+2026-04-02T17:15:57.172823,test_cohere_pro,"I am having a rough day, help me like a pro","I hear you, and I'm listening with full attention. 🌿 Could you tell me a bit more about what that feels like for you? I want to make sure I really understand.",False
+2026-04-02T17:16:53.988831,test_cohere_final,I am having a very stressful day at work,"Your mind is currently racing to protect you, but it’s becoming overwhelming 🌿. Let's try the **Grounding Breath**: Breathe in for 4, hold for 4, and breathe out slowly for 8. **How does your breathing feel right now?**",False
+2026-04-02T17:17:34.787482,test_error,Test error,"I'm having a little trouble thinking right now, but I'm still here for you. 💚
+
+Could you try sending your message again?",False

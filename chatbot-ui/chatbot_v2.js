@@ -1,5 +1,6 @@
-const API_URL = `http://${window.location.hostname}:8000/chat`;
-const SESSIONS_API_URL = `http://${window.location.hostname}:8000/sessions`;
+const API_BASE = window.location.hostname || "127.0.0.1";
+const API_URL = `http://${API_BASE}:8000/chat`;
+const SESSIONS_API_URL = `http://${API_BASE}:8000/sessions`;
 
 /* ── CONTEXTUAL CHIP SETS ───────────────────────────────── */
 const CHIP_SETS = {
@@ -921,7 +922,7 @@ async function submitAuth() {
     return;
   }
   
-  const endpoint = `http://${window.location.hostname}:8000/${isLoginMode ? 'login' : 'register'}`;
+  const endpoint = `http://${API_BASE}:8000/${isLoginMode ? 'login' : 'register'}`;
   document.getElementById("authSubmitBtn").innerText = "Please wait...";
   try {
     const res = await fetch(endpoint, {
