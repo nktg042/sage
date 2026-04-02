@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from pymongo import MongoClient
+import certifi
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,7 +20,7 @@ def get_db():
             print("[Warning] MONGO_URI is missing from .env, falling back to localhost.")
             _client = MongoClient("mongodb://localhost:27017/")
         else:
-            _client = MongoClient(MONGO_URI)
+            _client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000, tlsCAFile=certifi.where())
         # Using a database named 'mindease_db'
         _db = _client.get_database("mindease_db")
     return _db
