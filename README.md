@@ -1,75 +1,70 @@
-# Sage 🌿 - AI-Powered Mental Health Companion
+# 🌿 Sage — AI-Powered Mental Health Companion
 
-MindEase (Sage) is a professional, empathetic, and highly responsive AI mental health companion. Powered by **Google Gemini AI** and built on a high-performance **FastAPI** backend with **MongoDB Atlas** for secure cloud storage, Sage offers conversational support, mindfulness exercises, and compassionate guidance in both English and Hinglish.
+MindEase is a modern, professional mental health chatbot named **Sage**. It is designed to provide compassionate, evidence-based emotional support, safety-net crisis detection, and secure user-specific chat history tracking.
+
+---
 
 ## ✨ Features
 
-- **Empathetic Conversational AI:** Driven by Cohere's Command R LLM with a deeply crafted system prompt ensuring non-judgmental, evidence-based responses.
-- **Secure User Accounts (JWT):** Full authentication system allowing users to securely track and access their personal conversation history across sessions.
-- **Voice Support (Speech-to-Text):** Integrated Web Speech API allows you to talk directly to Sage using your microphone.
-- **Crisis Detection System:** Robust word-boundary keyword filtering (with typo support) for immediate detection of severe distress. Instantly provides offline emergency helplines.
-- **Export Chats to PDF:** Generate and download a clean PDF transcript of your counseling session for your personal records with a single click.
-- **Progressive Web App (PWA):** MindEase is installable directly to your mobile or desktop device's home screen for app-like offline UI behavior.
-- **Live Admin Dashboard:** Contains an analytics endpoint to view real-time platform statistics (total users, total messages, active sessions).
+- **Professional Conversational AI:** Driven by the **Cohere Command R** LLM family with an advanced system prompt designed for "Pro" level empathy and counseling techniques.
+- **Auto-Model Detective:** Sage intelligently chooses the latest, most stable Cohere model (released late 2024/2025) to ensure you always get high-quality support.
+- **Secure JWT Authentication:** Full user registration and login system. Sage remembers your private conversations across sessions and devices.
+- **PWA (Progressive Web App):** Install MindEase directly on your phone or desktop. Works like a native app with offline-ready UI.
+- **Voice-to-Text Integration:** Speak naturally to Sage using the built-in Web Speech API microphone support.
+- **Export to PDF:** Download clean, formatted transcripts of your counseling sessions with a single click.
+- **Crisis Detection System:** Robust word-boundary regex filtering (with common typo support) for immediate detection of severe distress, providing offline emergency helplines.
+- **Live Admin Dashboard:** Analytics dashboard protected by admin credentials to track global usage, session counts, and platform health.
 
 ## 🛠️ Technology Stack
 
-- **Backend:** Python, FastAPI, Uvicorn, PyJWT, Bcrypt
-- **Database:** MongoDB Atlas (via `pymongo`)
-- **AI Integration:** `cohere` SDK
-- **Frontend:** Vanilla HTML, CSS, JavaScript (Local Storage, Service Workers)
-- **Data Visualization & Export:** Chart.js, html2pdf.js
+- **Backend:** Python 3.9+, FastAPI, Uvicorn, PyJWT, Bcrypt
+- **Database:** MongoDB Atlas (Cloud-native scalable storage)
+- **AI Integration:** Cohere API (Command R family)
+- **Frontend:** Vanilla HTML5, CSS3 (Modern Glassmorphism), JavaScript
+- **Security:** JWT (JSON Web Tokens), BCrypt password hashing
 
 ## 🚀 Getting Started
 
 ### 1. Prerequisites
 - Python 3.9+
-- A [Cohere API Key](https://dashboard.cohere.com/)
-- A [MongoDB Atlas Cluster URI](https://cloud.mongodb.com/)
+- [Cohere API Key](https://dashboard.cohere.com/)
+- [MongoDB Atlas Cluster URI](https://cloud.mongodb.com/)
 
 ### 2. Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/nktg042/sage.git
+   cd sage
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/Scripts/activate  # Windows: venv\Scripts\activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Configure your `.env` file:
+   ```env
+   COHERE_API_KEY=your_key_here
+   MONGO_URI=your_mongodb_cluster_uri
+   ```
 
-Clone the repository:
-```bash
-git clone https://github.com/nktg042/sage.git
-cd sage
-```
+### 3. Running the App
+1. Start the FastAPI backend:
+   ```bash
+   uvicorn main:app --reload
+   ```
+2. Open `chatbot-ui/index.html` in your web browser.
 
-Create and activate a virtual environment:
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
-# Mac/Linux
-python3 -m venv venv
-source venv/bin/activate
-```
+---
 
-Install the required dependencies:
-```bash
-pip install -r requirements.txt
-```
+## 🔒 Security Note
+This application is an AI-powered conversational companion, **NOT** a replacement for professional clinical therapy. Mental health data is stored securely in MongoDB Atlas using unique user IDs, but always ensure you use strong passwords.
 
-### 3. Configuration
-Create a `.env` file in the root directory and add your API Keys:
-```env
-GEMINI_API_KEY=your_actual_api_key_here
-MONGO_URI=mongodb+srv://username:password@cluster0.mongodb.net/?appName=Cluster0
-JWT_SECRET=your_super_secret_string # (Optional, defaults to a local key)
-```
+## 👥 Contributors
+- **MindEase Team** 🌿
 
-**Important:** You must add your computer's IP address to the "Network Access" section in your MongoDB Atlas dashboard, otherwise the server will fail to connect.
-
-### 4. Run the Application
-
-Start the FastAPI backend server:
-```bash
-python -m uvicorn main:app --reload
-```
-The server will run at `http://127.0.0.1:8000`.
-
-To view the chatbot interface, simply open the `chatbot-ui/index.html` file in your web browser. To view the internal analytics dashboard, open `chatbot-ui/admin.html`.
-
-## ⚠️ Disclaimer
-
-Sage is an Artificial Intelligence companion intended purely for emotional support and wellness tracking. **It is NOT a licensed medical professional, therapist, or a substitute for medical advice.** If you are in crisis, please contact your local emergency services or mental health helplines immediately.
+---
+*Sage is dedicated to ensuring that no one has to walk their journey alone.*
