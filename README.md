@@ -4,7 +4,7 @@ MindEase (Sage) is a professional, empathetic, and highly responsive AI mental h
 
 ## ✨ Features
 
-- **Empathetic Conversational AI:** Driven by Google's Gemini LLM with a deeply crafted system prompt ensuring non-judgmental, evidence-based responses.
+- **Empathetic Conversational AI:** Driven by Cohere's Command R LLM with a deeply crafted system prompt ensuring non-judgmental, evidence-based responses.
 - **Secure User Accounts (JWT):** Full authentication system allowing users to securely track and access their personal conversation history across sessions.
 - **Voice Support (Speech-to-Text):** Integrated Web Speech API allows you to talk directly to Sage using your microphone.
 - **Crisis Detection System:** Robust word-boundary keyword filtering (with typo support) for immediate detection of severe distress. Instantly provides offline emergency helplines.
@@ -16,7 +16,7 @@ MindEase (Sage) is a professional, empathetic, and highly responsive AI mental h
 
 - **Backend:** Python, FastAPI, Uvicorn, PyJWT, Bcrypt
 - **Database:** MongoDB Atlas (via `pymongo`)
-- **AI Integration:** `google-generativeai` SDK
+- **AI Integration:** `cohere` SDK
 - **Frontend:** Vanilla HTML, CSS, JavaScript (Local Storage, Service Workers)
 - **Data Visualization & Export:** Chart.js, html2pdf.js
 
@@ -24,7 +24,7 @@ MindEase (Sage) is a professional, empathetic, and highly responsive AI mental h
 
 ### 1. Prerequisites
 - Python 3.9+
-- A [Google Gemini API Key](https://aistudio.google.com/)
+- A [Cohere API Key](https://dashboard.cohere.com/)
 - A [MongoDB Atlas Cluster URI](https://cloud.mongodb.com/)
 
 ### 2. Installation
